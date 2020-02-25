@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import LocationCard from './LocationCard';
 import LocationManager from '../../modules/LocationManager';
 
-const LocationList = () => {
+const LocationList = props => {
   // The initial state is an empty array
   const [locations, setLocation] = useState([]);
-
+  const {history} = props;
   const getLocation = () => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state
@@ -25,9 +25,21 @@ const LocationList = () => {
 
   // Finally we use map() to "loop over" the animals array to show a list of animal cards
   return (
+    <>
+    <section className='section-content'>
+				<button
+					type='button'
+					className='btn'
+					onClick={() => {
+						history.push('/locations/new');
+					}}>
+					Add Location
+				</button>
+			</section>
     <div className="container-cards">
       {locations.map(location => <LocationCard key={location.id} location={location} deleteLocation={deleteLocation}/>)}
     </div>
+    </>
   );
 };
 export default LocationList
