@@ -17,23 +17,32 @@ const LocationDetail = props => {
 	useEffect(() => {
 		//get(id) from AnimalManager and hang on to the data; put it into state
 		LocationManager.get(locationId).then(location => {
-			setLocation({
-				name: location.name
-			});
-			setIsLoading(false)
+			if(location.name === ""){
+				setLocation({
+					name: false
+				});
+			}else {
+				setLocation({
+					name: location.name
+				});
+				setIsLoading(false)
+			}
 		});
 	}, [locationId]);
 
 	return (
 		<div className='card'>
-			<div className='card-content'>
+			{
+				location.name ? 
+			(<div className='card-content'>
 				<h3>
 					<span style={{color: 'darkslategrey'}}>
 						{location.name}
 					</span>
 				</h3>
 				<button type="button" disabled={isLoading} onClick={handleDelete}>Close</button>
-			</div>
+			</div>) : (<p>This Location does not exist</p>)
+			}
 		</div>
 	);
 };

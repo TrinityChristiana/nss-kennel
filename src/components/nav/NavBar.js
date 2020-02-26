@@ -1,8 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink, withRouter} from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = () => {
+
 	return (
 		<header>
 			<h1 className='site-title'>
@@ -13,29 +14,49 @@ const NavBar = () => {
 			<nav>
 				<ul className='container'>
 					<li>
-						<Link className='nav-link' to='/'>
+						<NavLink
+							className='nav-link'
+							to='/home'
+							activeClassName='active-link'
+							>
 							Home
-						</Link>
+						</NavLink>
 					</li>
 					<li>
-						<Link className='nav-link' to='/animals'>
+						<NavLink
+							className='nav-link'
+							to='/animals'
+							activeClassName='active-link'
+							>
 							Animals
-						</Link>
+						</NavLink>
 					</li>
 					<li>
-						<Link className='nav-link' to='/locations'>
+						<NavLink
+							className='nav-link'
+							to='/locations'
+							activeClassName='active-link'
+							>
 							Locations
-						</Link>
+						</NavLink>
 					</li>
 					<li>
-						<Link className='nav-link' to='/employees'>
+						<NavLink
+							className='nav-link'
+							to='/employees'
+							activeClassName='active-link'
+							>
 							Employees
-						</Link>
+						</NavLink>
 					</li>
 					<li>
-						<Link className='nav-link' to='/owners'>
+						<NavLink
+							className='nav-link'
+							to='/owners'
+							activeClassName='active-link'
+							>
 							Owners
-						</Link>
+						</NavLink>
 					</li>
 				</ul>
 			</nav>
@@ -43,4 +64,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default withRouter(NavBar);

@@ -7,7 +7,6 @@ const AnimalDetail = props => {
 	const [isLoading, setIsLoading] = useState(true);
 
 	const {animalId, history} = props;
-
 	const handleDelete = () => {
 		//invoke the delete function in AnimalManger and re-direct to the animal list.
 		setIsLoading(true);
@@ -19,32 +18,46 @@ const AnimalDetail = props => {
 	useEffect(() => {
 		//get(id) from AnimalManager and hang on to the data; put it into state
 		AnimalManager.get(animalId).then(animal => {
-			setAnimal({
-				name: animal.name,
-				breed: animal.breed
-			});
-			setIsLoading(false);
+			if (animal.name !== undefined) {
+				setAnimal({
+					name: animal.name,
+					breed: animal.breed
+				});
+				setIsLoading(false);
+			} else {
+				setAnimal({
+					name: false,
+					breed: false
+				});
+				setIsLoading(false);
+			}
 		});
 	}, [animalId]);
 
 	return (
 		<div className='card'>
-			<div className='card-content'>
-				<picture>
-					<img src={require('./dog.svg')} alt='My Dog' />
-				</picture>
-				<h3>
-					Name:{' '}
-					<span style={{color: 'darkslategrey'}}>{animal.name}</span>
-				</h3>
-				<p>Breed: {animal.breed}</p>
-				<button
-					type='button'
-					disabled={isLoading}
-					onClick={handleDelete}>
-					Discharge
-				</button>
-			</div>
+			{animal.name ? (
+				<div className='card-content'>
+					<picture>
+						<img src={require('./dog.svg')} alt='My Dog' />
+					</picture>
+					<h3>
+						Name:{' '}
+						<span style={{color: 'darkslategrey'}}>
+							{animal.name}
+						</span>
+					</h3>
+					<p>Breed: {animal.breed}</p>
+					<button
+						type='button'
+						disabled={isLoading}
+						onClick={handleDelete}>
+						Discharge
+					</button>
+				</div>
+			) : (
+				<p>This animal does not exist!</p>
+			)}
 		</div>
 	);
 };
