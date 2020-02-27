@@ -19,15 +19,26 @@ import OwnerList from './owner/OwnerList';
 import OwnerForm from './owner/OwnerForm';
 
 const ApplicationViews = () => {
-	
-	const isAuthenticated = () =>{
-		return sessionStorage.getItem('credentials') !== null || localStorage.getItem('credentials') !== null;
-	}
-		
+	const isAuthenticated = () => {
+		return (
+			sessionStorage.getItem('credentials') !== null ||
+			localStorage.getItem('credentials') !== null
+		);
+	};
+
 	return (
 		<React.Fragment>
-
-			<Route path='/login' component={Login} />
+			<Route
+				exact
+				path='/login'
+				render={props => {
+					if (isAuthenticated()) {
+						return <Redirect to='/home' />;
+					} else {
+						return <Login/>;
+					}
+				}}
+			/>
 
 			<Route
 				exact
@@ -35,28 +46,28 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <Home />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			<Route
 				exact
 				path='/'
 				render={props => {
-					return <Redirect to="/home" />
+					return <Redirect to='/home' />;
 				}}
 			/>
-			
+
 			<Route
 				exact
 				path='/animals'
 				render={props => {
 					if (isAuthenticated()) {
-						return <AnimalList {...props} />
-					  } else {
-						return <Redirect to="/login" />
-					  }
+						return <AnimalList {...props} />;
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			<Route
@@ -69,10 +80,10 @@ const ApplicationViews = () => {
 								animalId={parseInt(props.match.params.animalId)}
 								{...props}
 							/>
-						);					  } else {
-						return <Redirect to="/login" />
-					  }
-					
+						);
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			<Route
@@ -80,9 +91,9 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <AnimalForm {...props} />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			{/*
@@ -99,9 +110,9 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <LocationList {...props} />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			<Route
@@ -111,13 +122,15 @@ const ApplicationViews = () => {
 					if (isAuthenticated()) {
 						return (
 							<LocationDetail
-								locationId={parseInt(props.match.params.locationId)}
+								locationId={parseInt(
+									props.match.params.locationId
+								)}
 								{...props}
 							/>
 						);
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 					// Pass the animalId to the AnimalDetailComponent
 				}}
 			/>
@@ -126,9 +139,9 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <LocationForm {...props} />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 
@@ -138,9 +151,9 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <EmployeeList {...props} />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			<Route
@@ -148,9 +161,9 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <EmployeeForm {...props} />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			<Route
@@ -159,9 +172,9 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <OwnerList {...props} />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 			<Route
@@ -170,9 +183,9 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <OwnerForm {...props} />;
-					  } else {
-						return <Redirect to="/login" />
-					  }
+					} else {
+						return <Redirect to='/login' />;
+					}
 				}}
 			/>
 		</React.Fragment>
