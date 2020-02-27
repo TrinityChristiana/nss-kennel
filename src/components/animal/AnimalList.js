@@ -3,11 +3,9 @@ import React, {useState, useEffect} from 'react';
 import AnimalCard from './AnimalCard';
 import AnimalManager from '../../modules/AnimalManager';
 
-const AnimalList = props => {
+const AnimalList = ({history}) => {
 	// The initial state is an empty array
 	const [animals, setAnimals] = useState([]);
-
-	const {history} = props;
 	
 	const getAnimals = () => {
 		// After the data comes back from the API, we

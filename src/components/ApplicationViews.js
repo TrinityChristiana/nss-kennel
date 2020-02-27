@@ -26,6 +26,7 @@ const ApplicationViews = () => {
 		
 	return (
 		<React.Fragment>
+
 			<Route path='/login' component={Login} />
 
 			<Route
@@ -46,6 +47,7 @@ const ApplicationViews = () => {
 					return <Redirect to="/home" />
 				}}
 			/>
+			
 			<Route
 				exact
 				path='/animals'

@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import LocationManager from '../../modules/LocationManager';
 
-const LocationDetail = props => {
+const LocationDetail = ({locationId, history}) => {
 	const [location, setLocation] = useState({name: ''});
 	const [isLoading, setIsLoading] = useState(true);
-
-	const {locationId, history} = props;
 
 	const handleDelete = id => {
 		setIsLoading(true);

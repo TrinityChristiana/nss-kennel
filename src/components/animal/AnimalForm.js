@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AnimalManager from '../../modules/AnimalManager';
 import './AnimalForm.css'
 
-const AnimalForm = props => {
+const AnimalForm = ({history}) => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,7 +22,7 @@ const AnimalForm = props => {
       setIsLoading(true);
       // Create the animal and redirect user to animal list
       AnimalManager.post(animal)
-        .then(() => props.history.push("/animals"));
+        .then(() => history.push("/animals"));
     }
   };
 

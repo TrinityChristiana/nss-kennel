@@ -1,7 +1,6 @@
 import React from "react";
 
-const EmployeeCard = props => {
-  const {deleteEmployee, employee} = props;
+const EmployeeCard = ({deleteEmployee, employee}) => {
   return (
     <div className="card">
       <div className="card-content">

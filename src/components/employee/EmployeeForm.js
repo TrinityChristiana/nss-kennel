@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import EmployeeManager from '../../modules/EmployeeManager';
 
-const EmployeeForm = props => {
+const EmployeeForm = ({history}) => {
   const [employee, setEmployee] = useState({ name: ""});
 
   const [isLoading, setIsLoading] = useState(false);
-
-  const {history} = props;
 
   const handleFieldChange = evt => {
     const stateToChange = { ...employee };

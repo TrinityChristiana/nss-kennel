@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import LocationCard from './LocationCard';
 import LocationManager from '../../modules/LocationManager';
 
-const LocationList = props => {
+const LocationList = ({history}) => {
   // The initial state is an empty array
   const [locations, setLocation] = useState([]);
-  const {history} = props;
+
   const getLocation = () => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state

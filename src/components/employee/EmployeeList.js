@@ -3,11 +3,9 @@ import React, {useState, useEffect} from 'react';
 import EmployeeCard from './EmployeeCard';
 import EmployeeManager from '../../modules/EmployeeManager';
 
-const EmployeeList = props => {
+const EmployeeList = ({history}) => {
 	// The initial state is an empty array
 	const [employees, setEmployees] = useState([]);
-
-  const {history} = props;
   
 	const getEmployees = () => {
 		// After the data comes back from the API, we

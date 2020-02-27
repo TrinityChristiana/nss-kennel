@@ -2,15 +2,14 @@ import React, {useState, useEffect} from 'react';
 import AnimalManager from '../../modules/AnimalManager';
 import './AnimalDetail.css';
 
-const AnimalDetail = props => {
+const AnimalDetail = ({animalId, history}) => {
 	const [animal, setAnimal] = useState({name: '', breed: ''});
 	const [isLoading, setIsLoading] = useState(true);
 
-	const {animalId, history} = props;
 	const handleDelete = () => {
 		//invoke the delete function in AnimalManger and re-direct to the animal list.
 		setIsLoading(true);
-		AnimalManager.delete(props.animalId).then(() =>
+		AnimalManager.delete(animalId).then(() =>
 			history.push('/animals')
 		);
 	};

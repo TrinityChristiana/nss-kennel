@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom"
 
-const LocationCard = props => {
-	const {deleteLocation, location} = props;
+const LocationCard = ({deleteLocation, location}) => {
 	return (
 		<>
 			<address>

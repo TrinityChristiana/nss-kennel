@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import LocationManager from '../../modules/LocationManager';
 
-const LocationForm = props => {
+const LocationForm = ({history}) => {
   const [location, setLocation] = useState({ name: ""});
 
   const [isLoading, setIsLoading] = useState(false);
-
-  const {history} = props;
 
   const handleFieldChange = evt => {
     const stateToChange = { ...location };
