@@ -32,6 +32,10 @@ const Kennel = () => {
 		setuser(isAuthenticated());
 	}, []);
 
+  const checkLoggedIn = () => {
+    setuser(isAuthenticated());
+  }
+
 	const handleLogin = (e, history) => {
 		
     e.preventDefault();
@@ -66,6 +70,7 @@ const Kennel = () => {
 		<>
 			<NavBar hasUser={hasUser} />
 			<ApplicationViews
+      checkLoggedIn={checkLoggedIn}
 				hasUser={hasUser}
 				handleLogin={handleLogin}
 				credentials={credentials}

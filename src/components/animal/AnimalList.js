@@ -6,7 +6,6 @@ import AnimalManager from '../../modules/AnimalManager';
 const AnimalList = ({history}) => {
 	// The initial state is an empty array
 	const [animals, setAnimals] = useState([]);
-	
 	const getAnimals = () => {
 		// After the data comes back from the API, we
 		//  use the setAnimals function to update state
