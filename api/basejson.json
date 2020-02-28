@@ -1,25 +1,34 @@
 {
     "animals": [
         {
-            "id": 1,
-            "name": "Doodles",
-            "breed": "Poodle"
-        },
-        {
             "id": 2,
-            "name": "Decker",
-            "breed": "German Shepherd"
+            "name": "Doodles",
+            "breed": "German Sheperd",
+            "employeeId": 3
         },
         {
             "id": 3,
             "name": "Esme",
-            "breed": "Pitbull"
+            "breed": "Pitbull",
+            "employeeId": 1
+        },
+        {
+            "name": "Jack",
+            "breed": "Big cat",
+            "id": 4,
+            "employeeId": 1
+        },
+        {
+            "name": "Angus",
+            "breed": "Gerbil",
+            "id": 5,
+            "employeeId": 2
         }
     ],
     "employees": [
         {
             "id": 1,
-            "name": "Jessica Yonker"
+            "name": "Jessica Younker"
         },
         {
             "id": 2,
@@ -28,14 +37,6 @@
         {
             "id": 3,
             "name": "Zoe LeBlanc"
-        },
-        {
-            "id": 4,
-            "name": "Blaise Roberts"
-        },
-        {
-            "id": 5,
-            "name": "Blair McMillan"
         }
     ],
     "locations": [

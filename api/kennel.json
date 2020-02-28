@@ -1,143 +1,64 @@
 {
   "animals": [
-    {
-      "name": "Doodles",
-      "breed": "Poodleasdasdasd",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "name": "Decker",
-      "breed": "German Shepherd"
-    },
-    {
-      "id": 3,
-      "name": "Esme",
-      "breed": "Pitbull"
-    },
-    {
-      "name": "Animal",
-      "breed": "aasdasd",
-      "id": 4
-    },
-    {
-      "name": "asdas",
-      "breed": "asdas",
-      "id": 5
-    },
-    {
-      "name": "this a name",
-      "breed": "this is a breed",
-      "id": 6
-    },
-    {
-      "name": "THi sis new",
-      "breed": "this is a newaskmdfghjkl/",
-      "id": 7
-    },
-    {
-      "name": "editinga",
-      "breed": "asdefgthyjukiosdasda",
-      "id": 8
-    }
+      {
+          "id": 2,
+          "name": "Doodles",
+          "breed": "German Sheperd",
+          "employeeId": 3
+      },
+      {
+          "id": 3,
+          "name": "Esme",
+          "breed": "Pitbull",
+          "employeeId": 1
+      },
+      {
+          "name": "Jack",
+          "breed": "Big cat",
+          "id": 4,
+          "employeeId": 1
+      },
+      {
+          "name": "Angus",
+          "breed": "Gerbil",
+          "id": 5,
+          "employeeId": 2
+      }
   ],
   "employees": [
-    {
-      "name": "Jessica Yonkers",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "name": "Jordan Nelson"
-    },
-    {
-      "id": 3,
-      "name": "Zoe LeBlanc"
-    },
-    {
-      "id": 4,
-      "name": "Blaise Roberts"
-    },
-    {
-      "id": 5,
-      "name": "Blair McMillan"
-    },
-    {
-      "name": "thi si snew",
-      "id": 6
-    },
-    {
-      "name": "fsdfs",
-      "id": 7
-    },
-    {
-      "name": "sfdsdf",
-      "id": 8
-    },
-    {
-      "name": "new",
-      "id": 9
-    },
-    {
-      "name": "Emplyeeeeee",
-      "id": 10
-    },
-    {
-      "name": "sdsdzf",
-      "id": 11
-    }
+      {
+          "id": 1,
+          "name": "Jessica Younker"
+      },
+      {
+          "id": 2,
+          "name": "Jordan Nelson"
+      },
+      {
+          "id": 3,
+          "name": "Zoe LeBlanc"
+      }
   ],
   "locations": [
-    {
-      "id": 1,
-      "name": "Nashville North"
-    },
-    {
-      "name": "Nashville Nashville",
-      "id": 2
-    },
-    {
-      "name": "South Location",
-      "id": 3
-    },
-    {
-      "name": "Eastern",
-      "id": 4
-    },
-    {
-      "name": "new",
-      "id": 5
-    },
-    {
-      "name": "bn",
-      "id": 6
-    }
+      {
+          "id": 1,
+          "name": "Nashville North"
+      },
+      {
+          "id": 2,
+          "name": "Nashville South"
+      }
   ],
   "owners": [
-    {
-      "id": 1,
-      "name": "Mason Burns",
-      "phone": "824-265-2450"
-    },
-    {
-      "name": "Carson Smith",
-      "phone": "677777777fghj",
-      "id": 2
-    },
-    {
-      "name": "owner name",
-      "phone": "343243",
-      "id": 3
-    },
-    {
-      "name": "ower name",
-      "phone": "567890-=",
-      "id": 4
-    },
-    {
-      "name": "name",
-      "phone": "phone",
-      "id": 5
-    }
+      {
+          "id": 1,
+          "name": "Mason Burns",
+          "phone": "824-265-2450"
+      },
+      {
+          "id": 2,
+          "name": "Carson Smoth",
+          "phone": "266-935-1693"
+      }
   ]
 }
