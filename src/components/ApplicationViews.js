@@ -7,16 +7,20 @@ import Home from './home/Home';
 import AnimalList from './animal/AnimalList';
 import AnimalDetail from './animal/AnimalDetail';
 import AnimalForm from './animal/AnimalForm';
+import AnimalEditForm from "./animal/AnimalEditForm";
 
 import LocationList from './location/LocationList';
 import LocationDetail from './location/LocationDetail';
 import LocationForm from './location/LocationForm';
+import EditLocation from './location/EditLocation';
 
 import EmployeeList from './employee/EmployeeList';
 import EmployeeForm from './employee/EmployeeForm';
+import EditEmployee from './employee/EditEmployee';
 
 import OwnerList from './owner/OwnerList';
 import OwnerForm from './owner/OwnerForm';
+import EditOwner from './owner/EditOwner';
 
 const ApplicationViews = () => {
 	const isAuthenticated = () => {
@@ -35,7 +39,7 @@ const ApplicationViews = () => {
 					if (isAuthenticated()) {
 						return <Redirect to='/home' />;
 					} else {
-						return <Login/>;
+						return <Login />;
 					}
 				}}
 			/>
@@ -71,6 +75,7 @@ const ApplicationViews = () => {
 				}}
 			/>
 			<Route
+			exact
 				path='/animals/:animalId(\d+)'
 				render={props => {
 					// Pass the animalId to the AnimalDetailComponent
@@ -87,10 +92,21 @@ const ApplicationViews = () => {
 				}}
 			/>
 			<Route
+			exact
 				path='/animals/new'
 				render={props => {
 					if (isAuthenticated()) {
 						return <AnimalForm {...props} />;
+					} else {
+						return <Redirect to='/login' />;
+					}
+				}}
+			/>
+			<Route
+				path='/animals/:animalId(\d+)/edit'
+				render={props => {
+					if (isAuthenticated()) {
+						return <AnimalEditForm {...props} />;
 					} else {
 						return <Redirect to='/login' />;
 					}
@@ -144,6 +160,17 @@ const ApplicationViews = () => {
 					}
 				}}
 			/>
+			<Route
+				path='/locations/:locationId(\d+)/edit'
+				render={props => {
+					if (isAuthenticated()) {
+						return <EditLocation {...props} />;
+					} else {
+						return <Redirect to='/login' />;
+					}
+				}}
+			/>
+
 
 			<Route
 				exact
@@ -167,6 +194,17 @@ const ApplicationViews = () => {
 				}}
 			/>
 			<Route
+				path='/employees/:employeeId(\d+)/edit'
+				render={props => {
+					if (isAuthenticated()) {
+						return <EditEmployee {...props} />;
+					} else {
+						return <Redirect to='/login' />;
+					}
+				}}
+			/>
+
+			<Route
 				exact
 				path='/owners'
 				render={props => {
@@ -183,6 +221,16 @@ const ApplicationViews = () => {
 				render={props => {
 					if (isAuthenticated()) {
 						return <OwnerForm {...props} />;
+					} else {
+						return <Redirect to='/login' />;
+					}
+				}}
+			/>
+			<Route
+				path='/owners/:ownerId(\d+)/edit'
+				render={props => {
+					if (isAuthenticated()) {
+						return <EditOwner {...props} />;
 					} else {
 						return <Redirect to='/login' />;
 					}

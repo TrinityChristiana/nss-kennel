@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './Animal.css';
 
-const AnimalCard = ({animal, deleteAnimal}) => {
+const AnimalCard = ({animal, deleteAnimal, editAnimal}) => {
 	return (
 		<div className='card'>
 			<div className='card-content'>
@@ -16,6 +16,9 @@ const AnimalCard = ({animal, deleteAnimal}) => {
 				<p>Breed: {animal.breed}</p>
 				<Link to={`/animals/${animal.id}`}>
 					<button>Details</button>
+				</Link>
+				<Link to={`/animals/${animal.id}/edit`}>
+					<button>Edit</button>
 				</Link>
 				<button type='button' onClick={() => deleteAnimal(animal.id)}>
 					Discharge

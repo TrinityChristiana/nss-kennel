@@ -22,5 +22,14 @@ export default {
 			},
 			body: JSON.stringify(newAnimal)
 		}).then(data => data.json())
+	},
+	edit(newAnimal, id) {
+		return fetch(`${remoteURL}/animals/${id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(newAnimal)
+		}).then(data => data.json())
 	}
 };

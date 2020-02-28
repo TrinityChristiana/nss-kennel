@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 //import the components we will need
 import OwnerCard from './OwnerCard';
 import OwnerManager from '../../modules/OwnerManager';
+import "./Owner.css"
 
 const OwnerList = props => {
 	// The initial state is an empty array

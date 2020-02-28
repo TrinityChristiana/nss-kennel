@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import OwnerManager from '../../modules/OwnerManager';
 import Form from './Form'
 
-const OwnerForm = props => {
+const OwnerForm = ({history, match}) => {
 	const [owner, setOwner] = useState({name: '', phone: ''});
+    const [isLoading, setIsLoading] = useState(false);
+    const [exists, setExists] = useState(true);
 
-	const [isLoading, setIsLoading] = useState(false);
-
-	const {history} = props;
 
 	const handleFieldChange = evt => {
 		const stateToChange = {...owner};
@@ -24,9 +23,23 @@ const OwnerForm = props => {
 		} else {
 			setIsLoading(true);
 			// Create the animal and redirect user to animal list
-			OwnerManager.post(owner).then(() => history.push('/owners'));
+			OwnerManager.edit(owner, match.params.ownerId).then(() => history.push('/owners'));
 		}
 	};
+
+const getOwner = id => {
+    OwnerManager.get(id).then(data => {
+        if(data.name == undefined){
+            setExists(false)
+        } else {
+            setOwner({name: data.name, phone: data.phone})
+        }
+    })
+}
+
+useEffect(() => {
+    getOwner(match.params.ownerId);
+}, [match.params.ownerId])
 
 	return (
 		<Form
@@ -34,7 +47,7 @@ const OwnerForm = props => {
 			handleClick={handleClick}
 			isLoading={isLoading}
 			owner={owner}
-			exists={true}
+			exists={exists}
 		/>
 	);
 };

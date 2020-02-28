@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import LocationManager from '../../modules/LocationManager';
+import Form from './Form'
 
 const LocationForm = ({history}) => {
   const [location, setLocation] = useState({ name: ""});
-
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -14,7 +14,7 @@ const LocationForm = ({history}) => {
 
   /*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
   */
-  const constructNewLocation = evt => {
+  const handleClick = evt => {
     evt.preventDefault();
     if (location.name === "") {
       window.alert("Please input an location name");
@@ -27,27 +27,13 @@ const LocationForm = ({history}) => {
   };
 
   return (
-    <>
-        <fieldset>
-          <div className="formgrid">
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="name"
-              placeholder="Location Name"
-            />
-            <label htmlFor="locationName">Name</label>
-          </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={constructNewLocation}
-            >Submit</button>
-          </div>
-        </fieldset>
-    </>
+    <Form
+			handleFieldChange={handleFieldChange}
+			handleClick={handleClick}
+			isLoading={isLoading}
+			location={location}
+			exists={true}
+		/>
   );
 };
 
