@@ -42,6 +42,7 @@ const EmployeeList = ({history}) => {
 			<div className='container-cards'>
 				{employees.map(employee => (
 					<EmployeeCard
+						history={history}
 						key={employee.id}
 						employee={employee}
 						deleteEmployee={deleteEmployee}

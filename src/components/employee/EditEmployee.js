@@ -1,22 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import EmployeeManager from '../../modules/EmployeeManager';
 import Form from './Form';
+import LocationManager from "../../modules/LocationManager"
 
 const EditEmployee = ({history, match}) => {
-	const [employee, setEmployee] = useState({name: ''});
+	const [employee, setEmployee] = useState({name: '', locationId: 0});
 	const [isLoading, setIsLoading] = useState(true);
 	const [exists, setExists] = useState(true);
+	const [locations, setLocations] = useState([]);
+
 
 	const handleFieldChange = evt => {
 		const stateToChange = {...employee};
 		stateToChange[evt.target.id] = evt.target.value;
+		if(evt.target.id == "locationId"){
+			stateToChange[evt.target.id] = Number(evt.target.value);
+		}
 		setEmployee(stateToChange);
 	};
 
 	/*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
 	 */
 	const handleClick = evt => {
-		if (employee.name === '') {
+		if (employee.name === '' || employee.locationId === '') {
 			window.alert('Please input an employee name');
 		} else {
 			setIsLoading(true);
@@ -29,13 +35,15 @@ const EditEmployee = ({history, match}) => {
 
     const getEmployee = id => {
         EmployeeManager.get(id).then(data => {
-            if(data.name == undefined){
+            if(data.name === undefined){
                 setExists(false);
             } else {
-                setEmployee({name: data.name})
+                setEmployee({name: data.name, locationId: data.locationId})
                 setIsLoading(false);
             }
-        })
+        }).then(() => {
+			LocationManager.getAll().then(setLocations);
+		})
     };
 
 	useEffect(() => {
@@ -49,6 +57,7 @@ const EditEmployee = ({history, match}) => {
 			isLoading={isLoading}
 			employee={employee}
 			exists={exists}
+			locations={locations}
 		/>
 	);
 };

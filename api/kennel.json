@@ -1,64 +1,100 @@
 {
   "animals": [
-      {
-          "id": 2,
-          "name": "Doodles",
-          "breed": "German Sheperd",
-          "employeeId": 3
-      },
-      {
-          "id": 3,
-          "name": "Esme",
-          "breed": "Pitbull",
-          "employeeId": 1
-      },
-      {
-          "name": "Jack",
-          "breed": "Big cat",
-          "id": 4,
-          "employeeId": 1
-      },
-      {
-          "name": "Angus",
-          "breed": "Gerbil",
-          "id": 5,
-          "employeeId": 2
-      }
+    {
+      "name": "Doodles",
+      "breed": "German Sheperd",
+      "employeeId": 3,
+      "id": 2
+    },
+    {
+      "name": "Esme",
+      "breed": "Pitbull",
+      "employeeId": 1,
+      "id": 3
+    },
+    {
+      "name": "Jack",
+      "breed": "Big cat",
+      "employeeId": 1,
+      "id": 4
+    },
+    {
+      "name": "Angus",
+      "breed": "Gerbil",
+      "employeeId": 2,
+      "id": 5
+    },
+    {
+      "name": "New ANimal",
+      "breed": "breed",
+      "employeeId": 4,
+      "id": 6
+    }
   ],
   "employees": [
-      {
-          "id": 1,
-          "name": "Jessica Younker"
-      },
-      {
-          "id": 2,
-          "name": "Jordan Nelson"
-      },
-      {
-          "id": 3,
-          "name": "Zoe LeBlanc"
-      }
+    {
+      "name": "Jordan Nelson",
+      "locationId": 1,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Zoe LeBlanc",
+      "locationId": 3
+    },
+    {
+      "name": "New EMployee",
+      "locationId": 3,
+      "id": 4
+    },
+    {
+      "name": "new Employee",
+      "locationId": "3",
+      "id": 5
+    },
+    {
+      "name": "newest employee",
+      "locationId": 3,
+      "id": 6
+    },
+    {
+      "name": "New EMployee",
+      "locationId": 6,
+      "id": 7
+    }
   ],
   "locations": [
-      {
-          "id": 1,
-          "name": "Nashville North"
-      },
-      {
-          "id": 2,
-          "name": "Nashville South"
-      }
+    {
+      "id": 1,
+      "name": "Nashville North"
+    },
+    {
+      "name": "this",
+      "id": 3
+    },
+    {
+      "name": "Eastern",
+      "id": 4
+    },
+    {
+      "name": "new",
+      "id": 5
+    },
+    {
+      "name": "bn",
+      "id": 6
+    }
   ],
   "owners": [
-      {
-          "id": 1,
-          "name": "Mason Burns",
-          "phone": "824-265-2450"
-      },
-      {
-          "id": 2,
-          "name": "Carson Smoth",
-          "phone": "266-935-1693"
-      }
+    {
+      "id": 1,
+      "name": "Mason Burns",
+      "phone": "824-265-2450"
+    },
+    {
+      "id": 2,
+      "name": "Carson Smoth",
+      "phone": "266-935-1693"
+    }
   ]
 }

@@ -3,7 +3,7 @@ import LocationManager from '../../modules/LocationManager';
 import Form from './Form';
 
 const EditLocation = ({history, match}) => {
-	const [location, setLocation] = useState({name: ''});
+	const [location, setLocation] = useState({name: '', employeesId: 0});
 	const [isLoading, setIsLoading] = useState(false);
 	const [exists, setExists] = useState(true);
 
@@ -16,8 +16,8 @@ const EditLocation = ({history, match}) => {
 	/*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
 	 */
 	const handleClick = evt => {
-		if (location.name === "") {
-		  window.alert("Please input an location name");
+		if (location.name === "" || location.employeesId === "") {
+		  window.alert("Please input an location name and Employee");
 		} else {
 		  setIsLoading(true);
 		  // Create the animal and redirect user to animal list
@@ -28,7 +28,7 @@ const EditLocation = ({history, match}) => {
 
 	const getLocation = (id) => {
         LocationManager.get(id).then(data => {
-            if(data.name == undefined){
+            if(data.name === undefined){
                 setExists(false)
             } else {
                 setLocation({name: data.name})
@@ -38,7 +38,7 @@ const EditLocation = ({history, match}) => {
 
 	useEffect(() => {
 		getLocation(match.params.locationId);
-	}, []);
+	}, [match.params.locationId]);
 
 	return (
 		<Form

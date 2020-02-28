@@ -1,45 +1,8 @@
 import React, {useState} from 'react';
 
-const Login = ({history}) => {
-	const [credentials, setCredentials] = useState({
-		email: '',
-		password: '',
-		remember: false
-	});
-
-	// Update state whenever an input field is edited
-	const handleFieldChange = evt => {
-		const stateToChange = {...credentials};
-		stateToChange[evt.target.id] = evt.target.value;
-		setCredentials(stateToChange);
-	};
-
-	const handleCheckChange = evt => {
-		const stateToChange = {...credentials};
-		stateToChange[evt.target.id] = evt.target.checked;
-		setCredentials(stateToChange);
-	};
-
-	const handleLogin = e => {
-		e.preventDefault();
-		/*
-        For now, just store the email and password that
-        the customer enters into session storage.
-        ...Let's just trust the user... That's a good idea, right????
-        
-    */
-		credentials.remember
-			? localStorage.setItem('credentials', JSON.stringify(credentials))
-			: sessionStorage.setItem(
-					'credentials',
-					JSON.stringify(credentials)
-              );
-              
-		history.push('/');
-	};
-
+const Login = ({history, handleLogin, handleFieldChange, handleCheckChange}) => {
 	return (
-		<form onSubmit={handleLogin}>
+		<div>
 			<fieldset>
 				<h3>Please sign in</h3>
 				<div className='formgrid'>
@@ -69,9 +32,9 @@ const Login = ({history}) => {
 					/>
 					<label htmlFor='inputRemember'>Remember Me</label>
 				</div>
-				<button type='submit'>Sign in</button>
+				<button onClick={(e) => handleLogin(e, history)}>Sign in</button>
 			</fieldset>
-		</form>
+		</div>
 	);
 };
 

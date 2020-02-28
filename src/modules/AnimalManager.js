@@ -23,6 +23,11 @@ export default {
 			body: JSON.stringify(newAnimal)
 		}).then(data => data.json());
 	},
+	getWithEmployee(id) {
+		return fetch(
+			`${remoteURL}/animals/${id}?_embed=employees`
+		).then(result => result.json());
+	},
 	edit(newAnimal, id) {
 		return fetch(`${remoteURL}/animals/${id}`, {
 			method: 'PUT',
