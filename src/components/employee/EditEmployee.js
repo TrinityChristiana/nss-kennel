@@ -29,7 +29,7 @@ const EditEmployee = ({history, match}) => {
 
     const getEmployee = id => {
         EmployeeManager.get(id).then(data => {
-            if(data.name == undefined){
+            if(data.name === undefined){
                 setExists(false);
             } else {
                 setEmployee({name: data.name})

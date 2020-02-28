@@ -28,7 +28,7 @@ const EditLocation = ({history, match}) => {
 
 	const getLocation = (id) => {
         LocationManager.get(id).then(data => {
-            if(data.name == undefined){
+            if(data.name === undefined){
                 setExists(false)
             } else {
                 setLocation({name: data.name})
@@ -38,7 +38,7 @@ const EditLocation = ({history, match}) => {
 
 	useEffect(() => {
 		getLocation(match.params.locationId);
-	}, []);
+	}, [match.params.locationId]);
 
 	return (
 		<Form

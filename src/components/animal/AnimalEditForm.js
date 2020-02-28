@@ -27,7 +27,7 @@ const AnimalEditForm = ({match, history}) => {
 
 	const getAnimalInfo = id => {
 		AnimalManager.get(id).then(data => {
-            if(data.name == undefined){
+            if(data.name === undefined){
                 setExists(false)
             } else {
                 setAnimal({name: data.name, breed: data.breed});

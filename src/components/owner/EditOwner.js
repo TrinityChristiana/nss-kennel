@@ -29,7 +29,7 @@ const OwnerForm = ({history, match}) => {
 
 const getOwner = id => {
     OwnerManager.get(id).then(data => {
-        if(data.name == undefined){
+        if(data.name === undefined){
             setExists(false)
         } else {
             setOwner({name: data.name, phone: data.phone})
