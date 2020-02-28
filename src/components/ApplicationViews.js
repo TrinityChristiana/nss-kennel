@@ -22,13 +22,41 @@ import OwnerList from './owner/OwnerList';
 import OwnerForm from './owner/OwnerForm';
 import EditOwner from './owner/EditOwner';
 
-const ApplicationViews = () => {
+const ApplicationViews = props => {
 	const isAuthenticated = () =>
 		sessionStorage.getItem('credentials') !== null ||
 		localStorage.getItem('credentials') !== null;
 
 	return (
 		<>
+			<Route
+				exact
+				path='*'
+				render={props => {
+					const locations = [
+						'home',
+						'animals',
+						'locations',
+						'employees',
+						'owners'
+					];
+					const urlLocation = props.match.params[0];
+					const urlValidArray = locations.map(element => {
+						return urlLocation.startsWith(element, 1)
+							? urlLocation.startsWith(`${element}/`, 1)
+								? Number(urlLocation.split('/')[2]) !== NaN
+									? isNaN(Number(urlLocation.split('/')[2])) 
+										? false
+										:true
+									: false
+								: false
+							: false;
+					});
+					const isValidUrl = urlValidArray.includes(true);
+					return !isValidUrl && <Redirect to='/home' />
+				}}
+			/>
+			{/* <Redirect from='*' to='/404' /> */}
 			{/* Login Route */}
 			<Route
 				exact

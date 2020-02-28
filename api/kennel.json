@@ -6,9 +6,9 @@
       "id": 1
     },
     {
-      "id": 2,
       "name": "Decker",
-      "breed": "German Shepherd"
+      "breed": "German Shepherd",
+      "id": 2
     },
     {
       "id": 3,
