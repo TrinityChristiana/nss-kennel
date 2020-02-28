@@ -1,9 +1,16 @@
 import React from 'react';
-// import './AnimalForm.css';
+import {Link} from "react-router-dom"
 
 const Form = ({handleFieldChange, handleClick, isLoading, owner, exists}) => {
 	return (
 		<>
+        <section className='section-content'>
+				<Link to={`/owners`}>
+					<button type='button' className='btn'>
+						Go Back to Owners
+					</button>
+				</Link>
+			</section>
 			{exists ? (
 				<fieldset>
 					<div className='formgrid'>

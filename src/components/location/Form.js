@@ -1,5 +1,5 @@
 import React from 'react';
-// import './AnimalForm.css';
+import {Link} from "react-router-dom";
 
 const Form = ({
 	handleFieldChange,
@@ -10,6 +10,13 @@ const Form = ({
 }) => {
 	return (
 		<>
+        <section className='section-content'>
+				<Link to={`/locations`}>
+					<button type='button' className='btn'>
+						Go Back to Locations
+					</button>
+				</Link>
+			</section>
 			{exists ? (
 			
                 <fieldset>

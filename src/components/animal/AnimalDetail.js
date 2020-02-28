@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import AnimalManager from '../../modules/AnimalManager';
 import './AnimalDetail.css';
 
@@ -9,9 +10,7 @@ const AnimalDetail = ({animalId, history}) => {
 	const handleDelete = () => {
 		//invoke the delete function in AnimalManger and re-direct to the animal list.
 		setIsLoading(true);
-		AnimalManager.delete(animalId).then(() =>
-			history.push('/animals')
-		);
+		AnimalManager.delete(animalId).then(() => history.push('/animals'));
 	};
 
 	useEffect(() => {
@@ -34,30 +33,43 @@ const AnimalDetail = ({animalId, history}) => {
 	}, [animalId]);
 
 	return (
-		<div className='card'>
-			{animal.name ? (
-				<div className='card-content'>
-					<picture>
-						<img src={require('./dog.svg')} alt='My Dog' />
-					</picture>
-					<h3>
-						Name:{' '}
-						<span style={{color: 'darkslategrey'}}>
-							{animal.name}
-						</span>
-					</h3>
-					<p>Breed: {animal.breed}</p>
-					<button
-						type='button'
-						disabled={isLoading}
-						onClick={handleDelete}>
-						Discharge
+		<>
+			<section className='section-content'>
+				<Link to={`/animals`}>
+					<button type='button' className='btn'>
+						Go Back to Animals
 					</button>
-				</div>
-			) : (
-				<p>This animal does not exist!</p>
-			)}
-		</div>
+				</Link>
+			</section>
+
+			<div className='card'>
+				{animal.name ? (
+					<div className='card-content'>
+						<picture>
+							<img src={require('./dog.svg')} alt='My Dog' />
+						</picture>
+						<h3>
+							Name:{' '}
+							<span style={{color: 'darkslategrey'}}>
+								{animal.name}
+							</span>
+						</h3>
+						<p>Breed: {animal.breed}</p>
+						<Link to={`/animals/${animalId}/edit`}>
+							<button>Edit</button>
+						</Link>
+						<button
+							type='button'
+							disabled={isLoading}
+							onClick={handleDelete}>
+							Discharge
+						</button>
+					</div>
+				) : (
+					<p>This animal does not exist!</p>
+				)}
+			</div>
+		</>
 	);
 };
 

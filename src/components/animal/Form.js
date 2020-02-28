@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom"
 import './AnimalForm.css';
 
 const Form = ({
@@ -6,11 +7,18 @@ const Form = ({
 	handleClick,
 	isLoading,
 	isEditing,
-    animal,
-    exists
+	animal,
+	exists
 }) => {
 	return (
 		<>
+			<section className='section-content'>
+				<Link to={`/animals`}>
+					<button type='button' className='btn'>
+						Go Back to Animals
+					</button>
+				</Link>
+			</section>
 			{exists ? (
 				<fieldset>
 					<div className='formgrid'>
