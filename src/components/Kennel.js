@@ -5,7 +5,7 @@ import ApplicationViews from './ApplicationViews';
 import './Kennel.css';
 
 const Kennel = () => {
-	const [hasUser, setuser] = useState(false);
+	const [hasUser, setuser] = useState(true);
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
@@ -36,10 +36,9 @@ const Kennel = () => {
 		
     e.preventDefault();
 
-		if (credentials.email == '' || credentials.password == '') {
+		if (credentials.email === '' || credentials.password === '') {
 			alert('please enter your password and email');
 		} else {
-      console.log(history)
 			credentials.remember
 				? localStorage.setItem(
 						'credentials',
@@ -51,7 +50,6 @@ const Kennel = () => {
 				  );
 
 			// history.push('/');
-          console.log(isAuthenticated())
 			setuser(isAuthenticated());
 		}
 		/*

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import EmployeeManager from '../../modules/EmployeeManager';
 import AnimalCard from '../animal/AnimalCard';
+import "./Employee.css"
 
 const EmployeeWithAnimals = props => {
 	const [employee, setEmployee] = useState({});
@@ -14,15 +15,16 @@ const EmployeeWithAnimals = props => {
 				setAnimals(APIResult.animals);
 			}
 		);
-	}, []);
+	});
 
 	return (
-		<div className='card'>
-			<p>Employee: {employee.name}</p>
+		<>
+			<p className="card" id="employee-name">{employee.name}'s Animals</p>
+
 			{animals.map(animal => (
 				<AnimalCard key={animal.id} animal={animal} {...props} />
 			))}
-		</div>
+		</>
 	);
 };
 

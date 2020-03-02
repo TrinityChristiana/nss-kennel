@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 const Login = ({history, handleLogin, handleFieldChange, handleCheckChange}) => {
 	return (

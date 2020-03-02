@@ -84,14 +84,16 @@ const ApplicationViews = ({
 			/>
 
 			<Route exact path='/' render={props => <Redirect to='/home' />} />
-
+{console.log(isAuthenticated)}
 			{/* Animal Route */}
 			<Route
 				exact
 				path='/animals'
+				
 				render={props =>
 					isAuthenticated ? (
 						<AnimalList {...props} />
+					
 					) : (
 						<Redirect to='/login' />
 					)

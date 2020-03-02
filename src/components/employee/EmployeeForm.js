@@ -14,7 +14,7 @@ const EmployeeForm = ({history}) => {
 
 		const stateToChange = {...employee};
 		stateToChange[evt.target.id] = evt.target.value;
-		if(evt.target.id == "locationId"){
+		if(evt.target.id === "locationId"){
 			stateToChange[evt.target.id] = Number(evt.target.value);
 		}
 		setEmployee(stateToChange);
