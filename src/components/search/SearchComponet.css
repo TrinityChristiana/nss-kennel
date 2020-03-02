@@ -1,6 +1,11 @@
 #search-container {
     width: 100%;
 }
+#search-container h1 {
+    border-bottom: 1px dotted blue;
+    width: 50%;
+}
+
 
 .card-container {
     display: flex;
@@ -9,4 +14,5 @@
 
 .search-card {
     width: 25%;
+    margin: 10px;
 }

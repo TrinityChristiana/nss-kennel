@@ -12,7 +12,7 @@ const ResultComponent = ({results, title}) => {
 							{item.breed && (
 								<picture>
 									<img
-										style={{width: '25%'}}
+										
 										src={require('../animal/dog.svg')}
 										alt='My Dog'
 									/>
