@@ -4,14 +4,22 @@ import ApplicationViews from './ApplicationViews';
 
 import './Kennel.css';
 
-const Kennel = () => {
+const Kennel = (props) => {
 	const [hasUser, setuser] = useState(true);
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
 		remember: false
 	});
+	const searchNode = React.createRef();
+	const [searchQuery, setSearchQuery] = useState("");
 
+const handleSearch = (evt, history) => {
+	if(evt.keyCode === 13){
+		history.push("/search")
+		setSearchQuery(searchNode.current.value)
+	}
+}
 	const clearUser = () => {
 		sessionStorage.clear();
 		localStorage.clear();
@@ -71,7 +79,7 @@ const Kennel = () => {
 
 	return (
 		<>
-			<NavBar hasUser={hasUser} clearUser={clearUser} />
+			<NavBar searchNode={searchNode} hasUser={hasUser} clearUser={clearUser} handleSearch={handleSearch}/>
 			<ApplicationViews
 				checkLoggedIn={checkLoggedIn}
 				hasUser={hasUser}
@@ -80,6 +88,8 @@ const Kennel = () => {
 				handleFieldChange={handleFieldChange}
 				handleCheckChange={handleCheckChange}
 				isAuthenticated={hasUser}
+				searchQuery={searchQuery}
+				
 			/>
 		</>
 	);

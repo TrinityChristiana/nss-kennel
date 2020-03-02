@@ -42,7 +42,7 @@ const EmployeeForm = ({history}) => {
 	
 	useEffect(() => {
 		getLocations();
-    }, [locations]);
+    }, [employee]);
 
 	return (
 		<Form

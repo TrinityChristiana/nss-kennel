@@ -2,11 +2,12 @@ import React from 'react';
 import {NavLink, withRouter} from 'react-router-dom';
 import './NavBar.css';
 
-const NavBar = ({hasUser, clearUser, history}) => {
+const NavBar = ({hasUser, clearUser, history, searchNode, handleSearch}) => {
 	const handleLogout = () => {
 		clearUser();
 		history.push('/');
 	};
+
 
 	return (
 		<header>
@@ -56,6 +57,15 @@ const NavBar = ({hasUser, clearUser, history}) => {
 							<span className='nav-link' onClick={handleLogout}>
 								Logout
 							</span>
+						</li>
+					) : null}
+					{hasUser ? (
+						<li>
+							<input ref={searchNode} type="text" onKeyUp={(evt) => {
+								handleSearch(evt, history)
+								
+								}}>
+							</input>
 						</li>
 					) : null}
 					{!hasUser ? (

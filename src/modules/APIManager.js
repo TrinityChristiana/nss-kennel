@@ -51,5 +51,10 @@ export default {
 		return fetch(
 			`${remoteURL}/${category}/${id}?_embed=animals`
 		).then(result => result.json());
+	},
+	searchTopic(category, query) {
+		return fetch(
+			`${remoteURL}/${category}/?name_like=${query}`
+		).then(result => result.json());
 	}
 };

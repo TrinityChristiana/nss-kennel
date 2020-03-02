@@ -1,0 +1,12 @@
+#search-container {
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-card {
+    width: 25%;
+}

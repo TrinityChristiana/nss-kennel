@@ -23,13 +23,16 @@ import OwnerList from './owner/OwnerList';
 import OwnerForm from './owner/OwnerForm';
 import EditOwner from './owner/EditOwner';
 
+import SearchComponent from './search/SearchComponet';
+
 const ApplicationViews = ({
 	hasUser,
 	handleLogin,
 	handleFieldChange,
 	handleCheckChange,
 	isAuthenticated,
-	checkLoggedIn
+	checkLoggedIn,
+	searchQuery
 }) => {
 	return (
 		<>
@@ -230,7 +233,7 @@ const ApplicationViews = ({
 			/>
 
 			<Route
-				path='/employees/:employeeId(\d+)/details'
+				path='/employees/:employeeId(\d+)'
 				render={props => {
 					return <EmployeeWithAnimals {...props} />;
 				}}
@@ -270,6 +273,19 @@ const ApplicationViews = ({
 					) : (
 						<Redirect to='/login' />
 					)
+				}}
+			/>
+			{/* Search Route */}
+			<Route
+				exact
+				path='/search'
+				render={props => {
+					checkLoggedIn();
+					return isAuthenticated ? (
+						<SearchComponent checkLoggedIn={checkLoggedIn} searchQuery={searchQuery} {...props} />
+					) : (
+						<Redirect to='/login' />
+					);
 				}}
 			/>
 		</>

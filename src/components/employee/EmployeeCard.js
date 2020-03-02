@@ -13,7 +13,7 @@ const EmployeeCard = ({deleteEmployee, employee, history}) => {
 				<button
 					type='button'
 					onClick={() => {
-						history.push(`/employees/${employee.id}/details`);
+						history.push(`/employees/${employee.id}`);
 					}}>
 					Details
 				</button>
