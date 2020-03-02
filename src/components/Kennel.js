@@ -11,6 +11,13 @@ const Kennel = () => {
 		password: '',
 		remember: false
 	});
+
+	const clearUser = () => {
+		sessionStorage.clear();
+		localStorage.clear();
+		setuser(isAuthenticated());
+	};
+
 	// Update state whenever an input field is edited
 	const handleFieldChange = evt => {
 		const stateToChange = {...credentials};
@@ -27,23 +34,20 @@ const Kennel = () => {
 		sessionStorage.getItem('credentials') !== null ||
 		localStorage.getItem('credentials') !== null;
 
-
 	useEffect(() => {
 		setuser(isAuthenticated());
 	}, []);
 
-  const checkLoggedIn = () => {
-    setuser(isAuthenticated());
-  }
+	const checkLoggedIn = () => {
+		setuser(isAuthenticated());
+	};
 
 	const handleLogin = (e, history) => {
-		
-    e.preventDefault();
+		e.preventDefault();
 
 		if (credentials.email == '' || credentials.password == '') {
 			alert('please enter your password and email');
 		} else {
-      console.log(history)
 			credentials.remember
 				? localStorage.setItem(
 						'credentials',
@@ -55,7 +59,6 @@ const Kennel = () => {
 				  );
 
 			// history.push('/');
-          console.log(isAuthenticated())
 			setuser(isAuthenticated());
 		}
 		/*
@@ -68,9 +71,9 @@ const Kennel = () => {
 
 	return (
 		<>
-			<NavBar hasUser={hasUser} />
+			<NavBar hasUser={hasUser} clearUser={clearUser} />
 			<ApplicationViews
-      checkLoggedIn={checkLoggedIn}
+				checkLoggedIn={checkLoggedIn}
 				hasUser={hasUser}
 				handleLogin={handleLogin}
 				credentials={credentials}

@@ -18,7 +18,6 @@ const EmployeeForm = ({history}) => {
 			stateToChange[evt.target.id] = Number(evt.target.value);
 		}
 		setEmployee(stateToChange);
-		console.log(employee)
 	};
 
 	/*  Local method for validation, set loadingStatus, create animal      
