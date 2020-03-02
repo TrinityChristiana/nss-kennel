@@ -6,18 +6,20 @@ import APIManager from '../../modules/APIManager';
 const AnimalList = ({history}) => {
 	// The initial state is an empty array
 	const [animals, setAnimals] = useState([]);
-	const category = "animals";
+	const category = 'animals';
+
 	const getAnimals = () => {
 		// After the data comes back from the API, we
 		//  use the setAnimals function to update state
-		return APIManager.getAll(category).then(animalsFromAPI => {
-			setAnimals(animalsFromAPI);
+		return APIManager.getAll(category).then(data => {
+			setAnimals(data);
+			return data;
 		});
 	};
 
 	const deleteAnimal = id => {
 		APIManager.delete(id, category).then(() =>
-		APIManager.getAll(category).then(setAnimals)
+			APIManager.getAll(category).then(setAnimals)
 		);
 	};
 
@@ -25,6 +27,8 @@ const AnimalList = ({history}) => {
 	useEffect(() => {
 		getAnimals();
 	}, []);
+
+	
 
 	// Finally we use map() to "loop over" the animals array to show a list of animal cards
 	return (

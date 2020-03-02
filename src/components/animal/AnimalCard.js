@@ -1,9 +1,48 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import APIManager from '../../modules/APIManager';
 
 import './Animal.css';
 
 const AnimalCard = ({animal, deleteAnimal}) => {
+	const [petOwners, setPetOwners] = useState([]);
+	const [ownerHTML, setOwnerHTML] = useState();
+
+	const obj = [];
+
+	const getOwners = () => {
+		APIManager.getWithEmbed(animal.id, 'animals', 'owner_pets').then(
+			data => {
+				data.owner_pets.forEach(element => {
+					APIManager.getWithCustomQuery(
+						'owner_pets',
+						`${element.id}/?_expand=owner`
+					)
+						.then(data => obj.push(data.owner))
+						.then(() => {
+							setPetOwners(obj);
+						});
+				});
+			}
+		);
+	};
+
+	useEffect(() => {
+		getOwners();
+	}, []);
+
+	const createHTML = () => {
+		return petOwners.map(person => <p> Hello, {person.name} </p>);
+	};
+
+	useEffect(() => {
+		if(petOwners.length !== 0){
+
+			setOwnerHTML(<><h3>Owners</h3> {petOwners.map((owner) => <p key={owner.id}>{owner.name}</p>)}</>)
+		}
+	}, [petOwners]);
+
+
 	return (
 		<div className='card'>
 			<div className='card-content'>
@@ -14,16 +53,22 @@ const AnimalCard = ({animal, deleteAnimal}) => {
 					Name: <span className='card-petname'>{animal.name}</span>
 				</h3>
 				<p>Breed: {animal.breed}</p>
+				{ownerHTML}
 				<Link to={`/animals/${animal.id}`}>
 					<button>Details</button>
 				</Link>
 				<Link to={`/animals/${animal.id}/edit`}>
 					<button>Edit</button>
 				</Link>
-				{deleteAnimal && <button type='button' onClick={() => deleteAnimal(animal.id)}>
-					Discharge
-				</button>}
-				
+
+
+				{deleteAnimal && (
+					<button
+						type='button'
+						onClick={() => deleteAnimal(animal.id)}>
+						Discharge
+					</button>
+				)}
 			</div>
 		</div>
 	);

@@ -9,7 +9,7 @@ const EmployeeWithAnimals = ({match, ...props}) => {
 
 	useEffect(() => {
 		//got here now make call to get employee with animal
-		APIManager.getWithAnimals(match.params.employeeId, "employees").then(
+		APIManager.getWithEmbed(match.params.employeeId, "employees", "getWithAnimals").then(
 			APIResult => {
 				setEmployee(APIResult);
 				setAnimals(APIResult.animals);

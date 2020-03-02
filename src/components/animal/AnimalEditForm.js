@@ -7,10 +7,15 @@ const AnimalEditForm = ({match, history}) => {
 	const [exists, setExists] = useState(true);
 	const [isLoading, setLoading] = useState(true);
 	const [employees, setEmployees] = useState([]);
+	
 	const category = "animals";
 	const handleFieldChange = evt => {
 		const animalChange = {...animal};
 		animalChange[evt.target.id] = evt.target.value;
+		if(evt.target.id == "employeeId"){
+			animalChange[evt.target.id] = Number(evt.target.value);
+
+		}
 		setAnimal(animalChange);
 	};
 
