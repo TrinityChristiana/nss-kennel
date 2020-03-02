@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import OwnerManager from '../../modules/OwnerManager';
+import APIManager from '../../modules/APIManager';
 import Form from './Form'
 
 const OwnerForm = props => {
@@ -24,7 +24,7 @@ const OwnerForm = props => {
 		} else {
 			setIsLoading(true);
 			// Create the animal and redirect user to animal list
-			OwnerManager.post(owner).then(() => history.push('/owners'));
+			APIManager.post(owner, "owners").then(() => history.push('/owners'));
 		}
 	};
 

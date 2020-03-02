@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import OwnerManager from '../../modules/OwnerManager';
+import APIManager from '../../modules/APIManager';
 import Form from './Form'
 
 const OwnerForm = ({history, match}) => {
@@ -23,12 +23,12 @@ const OwnerForm = ({history, match}) => {
 		} else {
 			setIsLoading(true);
 			// Create the animal and redirect user to animal list
-			OwnerManager.edit(owner, match.params.ownerId).then(() => history.push('/owners'));
+			APIManager.edit(owner, match.params.ownerId, "owners").then(() => history.push('/owners'));
 		}
 	};
 
 const getOwner = id => {
-    OwnerManager.get(id).then(data => {
+    APIManager.get(id, "owners").then(data => {
         if(data.name === undefined){
             setExists(false)
         } else {

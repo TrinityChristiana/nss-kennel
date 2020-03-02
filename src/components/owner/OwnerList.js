@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 //import the components we will need
 import OwnerCard from './OwnerCard';
-import OwnerManager from '../../modules/OwnerManager';
+import APIManager from '../../modules/APIManager';
 import "./Owner.css"
 
 const OwnerList = props => {
@@ -13,14 +13,14 @@ const OwnerList = props => {
 	const getOwners = () => {
 		// After the data comes back from the API, we
 		//  use the setAnimals function to update state
-		return OwnerManager.getAll().then(ownersFromAPI => {
+		return APIManager.getAll("owners").then(ownersFromAPI => {
 			setOwners(ownersFromAPI);
 		});
 	};
 
 	const deleteOwner = id => {
-		OwnerManager.delete(id).then(() =>
-			OwnerManager.getAll().then(setOwners)
+		APIManager.delete(id, "owners").then(() =>
+		APIManager.getAll("owners").then(setOwners)
 		);
 	};
 	// got the animals from the API on the component's first render
