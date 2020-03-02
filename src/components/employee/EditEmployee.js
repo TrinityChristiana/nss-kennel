@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import APIManager from '../../modules/APIManager';
 import Form from './Form';
-import LocationManager from "../../modules/LocationManager"
 
 const EditEmployee = ({history, match}) => {
 	const [employee, setEmployee] = useState({name: '', locationId: 0});
@@ -42,7 +41,7 @@ const EditEmployee = ({history, match}) => {
                 setIsLoading(false);
             }
         }).then(() => {
-			LocationManager.getAll().then(setLocations);
+			APIManager.getAll("locations").then(setLocations);
 		})
     };
 

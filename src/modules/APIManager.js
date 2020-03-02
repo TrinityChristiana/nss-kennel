@@ -46,5 +46,10 @@ export default {
 				const randomElement = elements[randomIndex];
 				return randomElement.id;
 			});
+	},
+	getWithAnimals(id, category) {
+		return fetch(
+			`${remoteURL}/${category}/${id}?_embed=animals`
+		).then(result => result.json());
 	}
 };

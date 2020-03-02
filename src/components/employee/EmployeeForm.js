@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import EmployeeManager from '../../modules/EmployeeManager';
-import LocationManager from '../../modules/LocationManager';
+import APIManager from '../../modules/APIManager';
 import Form from './Form';
 
 
@@ -30,7 +29,7 @@ const EmployeeForm = ({history}) => {
 		} else {
 			setIsLoading(true);
 			// Create the animal and redirect user to animal list
-			EmployeeManager.post(employee).then(() =>
+			APIManager.post(employee, "employees").then(() =>
 				history.push('/employees')
 			);
 		}
@@ -38,7 +37,7 @@ const EmployeeForm = ({history}) => {
 
 
 	const getLocations = ()=> {
-			LocationManager.getAll().then(setLocations).then(() => setIsLoading(false));
+			APIManager.getAll("locations").then(setLocations).then(() => setIsLoading(false));
 	};
 	
 	useEffect(() => {

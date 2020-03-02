@@ -1,21 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import EmployeeManager from '../../modules/EmployeeManager';
+import APIManager from '../../modules/APIManager';
 import AnimalCard from '../animal/AnimalCard';
 import "./Employee.css"
 
-const EmployeeWithAnimals = props => {
+const EmployeeWithAnimals = ({match, ...props}) => {
 	const [employee, setEmployee] = useState({});
 	const [animals, setAnimals] = useState([]);
 
 	useEffect(() => {
 		//got here now make call to get employee with animal
-		EmployeeManager.getWithAnimals(props.match.params.employeeId).then(
+		APIManager.getWithAnimals(match.params.employeeId, "employees").then(
 			APIResult => {
 				setEmployee(APIResult);
 				setAnimals(APIResult.animals);
 			}
 		);
-	});
+	}, [match.params.employeeId]);
 
 	return (
 		<>

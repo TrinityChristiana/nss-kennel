@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 //import the components we will need
 import EmployeeCard from './EmployeeCard';
-import EmployeeManager from '../../modules/EmployeeManager';
+import APIManager from '../../modules/APIManager';
 
 const EmployeeList = ({history}) => {
 	// The initial state is an empty array
@@ -10,14 +10,14 @@ const EmployeeList = ({history}) => {
 	const getEmployees = () => {
 		// After the data comes back from the API, we
 		//  use the setAnimals function to update state
-		return EmployeeManager.getAll().then(employeesFromAPI => {
+		return APIManager.getAll("employees").then(employeesFromAPI => {
 			setEmployees(employeesFromAPI);
 		});
 	};
 
 	const deleteEmployee = id => {
-		EmployeeManager.delete(id).then(() =>
-			EmployeeManager.getAll().then(setEmployees)
+		APIManager.delete(id, "employees").then(() =>
+		APIManager.getAll("employees").then(setEmployees)
 		);
 	};
 
