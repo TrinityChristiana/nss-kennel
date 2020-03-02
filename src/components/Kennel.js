@@ -5,7 +5,7 @@ import ApplicationViews from './ApplicationViews';
 import './Kennel.css';
 
 const Kennel = () => {
-	const [hasUser, setuser] = useState(false);
+	const [hasUser, setuser] = useState(true);
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
@@ -45,7 +45,7 @@ const Kennel = () => {
 	const handleLogin = (e, history) => {
 		e.preventDefault();
 
-		if (credentials.email == '' || credentials.password == '') {
+		if (credentials.email === '' || credentials.password === '') {
 			alert('please enter your password and email');
 		} else {
 			credentials.remember

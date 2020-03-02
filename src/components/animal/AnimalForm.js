@@ -12,7 +12,7 @@ const AnimalForm = ({history}) => {
 	const handleFieldChange = evt => {
 		const animalChange = {...animal};
 		animalChange[evt.target.id] = evt.target.value;
-		if(evt.target.id == "employeeId"){
+		if(evt.target.id === "employeeId"){
 			animalChange[evt.target.id] = Number(evt.target.value);
 		}
         setAnimal(animalChange);

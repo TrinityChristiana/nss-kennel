@@ -27,15 +27,17 @@ const LocationDetail = ({locationId, history}) => {
 			<Link to={`/locations`}>
 				<button>Go Back to Locations</button>
 			</Link>
-			<div>
-				{location.name ? (
-					<div className='card-content'>
-						<h3>
-							<span style={{color: 'darkslategrey'}}>
-								{location.name}
-							</span>
-						</h3>
-						{/* <Link to={`/locations/${locationId}/edit`}>
+
+			{location.name ? (
+				<div>
+					<p
+						className='card'
+						id='location-name'
+						style={{color: 'darkslategrey'}}>
+						{location.name}'s Employee's
+					</p>
+
+					{/* <Link to={`/locations/${locationId}/edit`}>
 							<button>Edit</button>
 						</Link>
 						<button
@@ -44,19 +46,23 @@ const LocationDetail = ({locationId, history}) => {
 							onClick={handleDelete}>
 							Close
 						</button> */}
-
-						{location.employees.map(employee => (
+					{location.employees.length !== 0 ? (
+						location.employees.map(employee => (
 							<EmployeeCard
-							key={employee.id}
+								key={employee.id}
 								employee={employee}
 								history={history}
 							/>
-						))}
-					</div>
-				) : (
-					<p>This Location does not exist</p>
-				)}
-			</div>
+						))
+					) : (
+						<div className='card' id='no-employees'>
+							<p>There are no employees here</p>
+						</div>
+					)}
+				</div>
+			) : (
+				<p>This Location does not exist</p>
+			)}
 		</>
 	);
 };
