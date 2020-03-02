@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import LocationManager from '../../modules/LocationManager';
+import APIManager from '../../modules/APIManager';
 import Form from './Form';
 
 const EditLocation = ({history, match}) => {
@@ -21,13 +21,13 @@ const EditLocation = ({history, match}) => {
 		} else {
 		  setIsLoading(true);
 		  // Create the animal and redirect user to animal list
-		  LocationManager.edit(location, match.params.locationId)
+		  APIManager.edit(location, match.params.locationId, "locations")
 		    .then(() => history.push("/locations"));
 		}
 	};
 
 	const getLocation = (id) => {
-        LocationManager.get(id).then(data => {
+        APIManager.get(id, "locations").then(data => {
             if(data.name === undefined){
                 setExists(false)
             } else {

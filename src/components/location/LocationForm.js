@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LocationManager from '../../modules/LocationManager';
+import APIManager from '../../modules/APIManager';
 import Form from './Form'
 
 const LocationForm = ({history}) => {
@@ -21,7 +21,7 @@ const LocationForm = ({history}) => {
     } else {
       setIsLoading(true);
       // Create the animal and redirect user to animal list
-      LocationManager.post(location)
+      APIManager.post(location, "locations")
         .then(() => history.push("/locations"));
     }
   };

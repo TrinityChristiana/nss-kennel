@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 //import the components we will need
 import LocationCard from './LocationCard';
-import LocationManager from '../../modules/LocationManager';
+import APIManager from '../../modules/APIManager';
 import './Location.css';
 
 const LocationList = ({history, hasUser}) => {
@@ -11,14 +11,14 @@ const LocationList = ({history, hasUser}) => {
 	const getLocation = () => {
 		// After the data comes back from the API, we
 		//  use the setAnimals function to update state
-		return LocationManager.getAll().then(locationFromAPI => {
+		return APIManager.getAll("locations").then(locationFromAPI => {
 			setLocation(locationFromAPI);
 		});
 	};
 
 	const deleteLocation = id => {
-		LocationManager.delete(id).then(() =>
-			LocationManager.getAll().then(setLocation)
+		APIManager.delete(id, "locations").then(() =>
+		APIManager.getAll("locations").then(setLocation)
 		);
 	};
 	// got the animals from the API on the component's first render

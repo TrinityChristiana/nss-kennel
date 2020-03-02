@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import LocationManager from '../../modules/LocationManager';
+import APIManager from '../../modules/APIManager';
 import EmployeeCard from '../employee/EmployeeCard';
 
 const LocationDetail = ({locationId, history}) => {
@@ -8,7 +8,7 @@ const LocationDetail = ({locationId, history}) => {
 
 	useEffect(() => {
 		//get(id) from AnimalManager and hang on to the data; put it into state
-		LocationManager.getWithEmployee(locationId).then(location => {
+		APIManager.getWithEmployee(locationId, "locations").then(location => {
 			if (location.name === '' || location.employees === '') {
 				setLocation({
 					name: false
