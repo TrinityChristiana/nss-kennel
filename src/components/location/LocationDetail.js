@@ -9,7 +9,7 @@ const LocationDetail = ({locationId, history}) => {
 	useEffect(() => {
 		//get(id) from AnimalManager and hang on to the data; put it into state
 		LocationManager.getWithEmployee(locationId).then(location => {
-			if (location.name === '', location.employees === '') {
+			if (location.name === '' || location.employees === '') {
 				setLocation({
 					name: false
 				});
