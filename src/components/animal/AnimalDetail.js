@@ -1,21 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import AnimalManager from '../../modules/AnimalManager';
+import APIManager from '../../modules/APIManager';
 import './AnimalDetail.css';
 
 const AnimalDetail = ({animalId, history}) => {
 	const [animal, setAnimal] = useState({name: '', breed: ''});
 	const [isLoading, setIsLoading] = useState(true);
-
+	const category = "animals";
 	const handleDelete = () => {
 		//invoke the delete function in AnimalManger and re-direct to the animal list.
 		setIsLoading(true);
-		AnimalManager.delete(animalId).then(() => history.push('/animals'));
+		APIManager.delete(animalId, category).then(() => history.push('/animals'));
 	};
 
 	useEffect(() => {
-		//get(id) from AnimalManager and hang on to the data; put it into state
-		AnimalManager.get(animalId).then(animal => {
+		APIManager.get(animalId, category).then(animal => {
 			if (animal.name !== undefined) {
 				setAnimal({
 					name: animal.name,

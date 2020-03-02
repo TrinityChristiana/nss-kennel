@@ -1,66 +1,37 @@
 {
   "animals": [
     {
+      "id": 2,
       "name": "Doodles",
       "breed": "German Sheperd",
-      "employeeId": 3,
-      "id": 2
+      "employeeId": 3
     },
     {
+      "id": 3,
       "name": "Esme",
       "breed": "Pitbull",
-      "employeeId": 1,
-      "id": 3
+      "employeeId": 1
     },
     {
-      "name": "Jack",
-      "breed": "Big cat",
-      "employeeId": 1,
+      "name": "Jacks",
+      "breed": "Big cats",
+      "employeeId": "3",
       "id": 4
-    },
-    {
-      "name": "Angus",
-      "breed": "Gerbil",
-      "employeeId": 2,
-      "id": 5
-    },
-    {
-      "name": "New ANimal",
-      "breed": "breed",
-      "employeeId": 4,
-      "id": 6
     }
   ],
   "employees": [
     {
+      "id": 1,
+      "name": "Jessica Younker"
+    },
+    {
       "name": "Jordan Nelson",
-      "locationId": 1,
+      "locationId": 2,
       "id": 2
     },
     {
       "id": 3,
-      "name": "Zoe LeBlanc",
-      "locationId": 3
-    },
-    {
-      "name": "New EMployee",
-      "locationId": 3,
-      "id": 4
-    },
-    {
-      "name": "new Employee",
-      "locationId": "3",
-      "id": 5
-    },
-    {
-      "name": "newest employee",
-      "locationId": 3,
-      "id": 6
-    },
-    {
-      "name": "New EMployee",
-      "locationId": 6,
-      "id": 7
+      "name": "Zoe LeBlanc"
     }
   ],
   "locations": [
@@ -69,20 +40,8 @@
       "name": "Nashville North"
     },
     {
-      "name": "this",
-      "id": 3
-    },
-    {
-      "name": "Eastern",
-      "id": 4
-    },
-    {
-      "name": "new",
-      "id": 5
-    },
-    {
-      "name": "bn",
-      "id": 6
+      "id": 2,
+      "name": "Nashville South"
     }
   ],
   "owners": [

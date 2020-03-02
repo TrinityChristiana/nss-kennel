@@ -85,7 +85,7 @@ const ApplicationViews = ({
 				}}
 			/>
 
-			<Route exact path='/' render={props => <Redirect to='/home' />} />
+			{/* <Route exact path='/' render={props => <Redirect to='/home' />} /> */}
 
 			{/* Animal Route */}
 			<Route

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import EmployeeManager from '../../modules/EmployeeManager';
+import APIManager from '../../modules/APIManager';
 import Form from './Form';
 import LocationManager from "../../modules/LocationManager"
 
@@ -8,7 +8,7 @@ const EditEmployee = ({history, match}) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [exists, setExists] = useState(true);
 	const [locations, setLocations] = useState([]);
-
+	const category = "employees";
 
 	const handleFieldChange = evt => {
 		const stateToChange = {...employee};
@@ -27,14 +27,14 @@ const EditEmployee = ({history, match}) => {
 		} else {
 			setIsLoading(true);
 			// Create the animal and redirect user to animal list
-			EmployeeManager.edit(employee, match.params.employeeId).then(() =>
+			APIManager.edit(employee, match.params.employeeId, category).then(() =>
 				history.push('/employees')
 			);
 		}
 	};
 
     const getEmployee = id => {
-        EmployeeManager.get(id).then(data => {
+        APIManager.get(id, category).then(data => {
             if(data.name === undefined){
                 setExists(false);
             } else {

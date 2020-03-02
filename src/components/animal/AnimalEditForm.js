@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import AnimalManager from '../../modules/AnimalManager';
-import EmployeeManager from '../../modules/EmployeeManager';
+import APIManager from '../../modules/APIManager';
 import Form from './Form';
 
 const AnimalEditForm = ({match, history}) => {
@@ -8,7 +7,7 @@ const AnimalEditForm = ({match, history}) => {
 	const [exists, setExists] = useState(true);
 	const [isLoading, setLoading] = useState(true);
 	const [employees, setEmployees] = useState([]);
-
+	const category = "animals";
 	const handleFieldChange = evt => {
 		const animalChange = {...animal};
 		animalChange[evt.target.id] = evt.target.value;
@@ -20,14 +19,14 @@ const AnimalEditForm = ({match, history}) => {
 			window.alert('Please input an animal name and breed');
 		} else {
 			setLoading(true);
-			AnimalManager.edit(animal, match.params.animalId).then(() => {
+			APIManager.edit(animal, match.params.animalId, category).then(() => {
 				history.push('/animals');
 			});
 		}
 	};
 
 	const getAllInfo = id => {
-		AnimalManager.get(id).then(data => {
+		APIManager.get(id, category).then(data => {
 			if (data.name === undefined) {
 				setExists(false);
 			} else {
@@ -38,7 +37,7 @@ const AnimalEditForm = ({match, history}) => {
 				});
 			}
 		}).then(() => {
-			EmployeeManager.getAll().then(data => {
+			APIManager.getAll("employees").then(data => {
 				setEmployees(data);
 				setLoading(false);
 			});

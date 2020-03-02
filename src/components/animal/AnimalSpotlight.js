@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import AnimalManager from "../../modules/AnimalManager";
+import APIManager from "../../modules/APIManager";
 import "./AnimalSpotlight.css";
 
 const AnimalSpotlight = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
-
+  const category = "animals";
   useEffect(() => {
-    AnimalManager.get(props.animalId).then(animal => {
+    APIManager.get(props.animalId, category).then(animal => {
       setAnimal({
         name: animal.name,
         breed: animal.breed

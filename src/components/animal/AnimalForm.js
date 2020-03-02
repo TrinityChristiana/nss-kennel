@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import AnimalManager from '../../modules/AnimalManager';
-import EmployeeManager from '../../modules/EmployeeManager';
+import APIManager from '../../modules/APIManager';
 
 
 import Form from './Form';
@@ -9,7 +8,7 @@ const AnimalForm = ({history}) => {
 	const [animal, setAnimal] = useState({name: '', breed: '', employeeId: 0});
 	const [employees, setEmployee] = useState([])
 	const [isLoading, setIsLoading] = useState(true);
-
+	const category = "animals";
 	const handleFieldChange = evt => {
 		const animalChange = {...animal};
 		animalChange[evt.target.id] = evt.target.value;
@@ -19,8 +18,7 @@ const AnimalForm = ({history}) => {
         setAnimal(animalChange);
 	};
 
-	/*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
-	 */
+
 	const handleClick = evt => {
 		evt.preventDefault();
 		if (animal.name === '' || animal.breed === '' || animal.employeeId === '') {
@@ -28,12 +26,12 @@ const AnimalForm = ({history}) => {
 		} else {
 			setIsLoading(true);
 			// Create the animal and redirect user to animal list
-			AnimalManager.post(animal).then(() => history.push('/animals'));
+			APIManager.post(animal, category).then(() => history.push('/animals'));
 		}
 	};
 
 	const getEmployees = () => {
-		EmployeeManager.getAll().then(setEmployee).then(setIsLoading(false));
+		APIManager.getAll("employees").then(setEmployee).then(setIsLoading(false));
 	}
 
 	useEffect(() => {
