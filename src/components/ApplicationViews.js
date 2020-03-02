@@ -86,7 +86,7 @@ const ApplicationViews = ({
 			/>
 
 			<Route exact path='/' render={props => <Redirect to='/home' />} />
-
+{console.log(isAuthenticated)}
 			{/* Animal Route */}
 			<Route
 				exact
