@@ -28,8 +28,6 @@ const AnimalList = ({history}) => {
 		getAnimals();
 	}, []);
 
-	
-
 	// Finally we use map() to "loop over" the animals array to show a list of animal cards
 	return (
 		<>
