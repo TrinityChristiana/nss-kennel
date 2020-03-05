@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import APIManager from '../../modules/APIManager';
+import PropTypes from 'prop-types'
 import Form from './Form';
 
 const EditEmployee = ({history, match}) => {
@@ -60,5 +61,10 @@ const EditEmployee = ({history, match}) => {
 		/>
 	);
 };
+
+EditEmployee.propType = {
+	history: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
+  };
 
 export default EditEmployee;

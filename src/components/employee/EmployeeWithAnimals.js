@@ -7,15 +7,17 @@ const EmployeeWithAnimals = ({match, ...props}) => {
 	const [employee, setEmployee] = useState({});
 	const [animals, setAnimals] = useState([]);
 
+
 	useEffect(() => {
-		//got here now make call to get employee with animal
-		APIManager.getWithEmbed(match.params.employeeId, "employees", "getWithAnimals").then(
+		APIManager.getWithEmbed(match.params.employeeId, "employees", "animals").then(
 			APIResult => {
+				console.log(APIResult)
 				setEmployee(APIResult);
 				setAnimals(APIResult.animals);
 			}
 		);
-	}, [match.params.employeeId]);
+	}, []);
+
 
 	return (
 		<>

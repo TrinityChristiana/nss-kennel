@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types'
 import APIManager from '../../modules/APIManager';
-
-
 import Form from './Form';
 
 const AnimalForm = ({history}) => {
@@ -50,5 +49,9 @@ const AnimalForm = ({history}) => {
 		/>
 	);
 };
+
+AnimalForm.propTypes = {
+	history: PropTypes.object.isRequired
+  };
 
 export default AnimalForm;
