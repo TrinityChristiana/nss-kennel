@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types'
 import './AnimalForm.css';
 
 const Form = ({
@@ -69,4 +70,15 @@ const Form = ({
 		</>
 	);
 };
+
+Form.propTypes = {
+	handleFieldChange: PropTypes.func.isRequired,
+	handleClick: PropTypes.func.isRequired,
+	isLoading: PropTypes.bool.isRequired,
+	isEditing: PropTypes.bool.isRequired,
+	animal: PropTypes.object.isRequired,
+    exists: PropTypes.bool.isRequired,
+    employees: PropTypes.array.isRequired
+  };
+  
 export default Form;

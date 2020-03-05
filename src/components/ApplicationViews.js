@@ -221,6 +221,7 @@ const ApplicationViews = ({
 			/>
 
 			<Route
+			
 				path='/employees/:employeeId(\d+)/edit'
 				render={props =>{
 					checkLoggedIn();
@@ -233,6 +234,7 @@ const ApplicationViews = ({
 			/>
 
 			<Route
+			exact
 				path='/employees/:employeeId(\d+)'
 				render={props => {
 					return <EmployeeWithAnimals {...props} />;

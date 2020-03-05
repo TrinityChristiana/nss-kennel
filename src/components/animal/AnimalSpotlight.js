@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import APIManager from "../../modules/APIManager";
+import PropTypes from 'prop-types';
 import "./AnimalSpotlight.css";
 
-const AnimalSpotlight = props => {
+const AnimalSpotlight = ({animalId}) => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
   const category = "animals";
   useEffect(() => {
-    APIManager.get(props.animalId, category).then(animal => {
+    APIManager.get(animalId, category).then(animal => {
       setAnimal({
         name: animal.name,
         breed: animal.breed
       });
     });
-  }, [props.animalId]);
+  }, [animalId]);
 
   return (
     <div className="animal-spotlight">
@@ -25,4 +26,7 @@ const AnimalSpotlight = props => {
   );
 };
 
+AnimalSpotlight.propTypes = {
+  animalId: PropTypes.number.isRequired
+};
 export default AnimalSpotlight;

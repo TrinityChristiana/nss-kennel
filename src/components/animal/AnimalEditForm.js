@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types'
 import APIManager from '../../modules/APIManager';
 import Form from './Form';
 
@@ -12,7 +13,7 @@ const AnimalEditForm = ({match, history}) => {
 	const handleFieldChange = evt => {
 		const animalChange = {...animal};
 		animalChange[evt.target.id] = evt.target.value;
-		if(evt.target.id == "employeeId"){
+		if(evt.target.id === "employeeId"){
 			animalChange[evt.target.id] = Number(evt.target.value);
 
 		}
@@ -65,5 +66,10 @@ const AnimalEditForm = ({match, history}) => {
 		/>
 	);
 };
+
+AnimalEditForm.propTypes = {
+	match: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired
+  };
 
 export default AnimalEditForm;
